@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        width: 340px;
+        margin: 0;
+        padding: 12px;
+        background: #0f1117;
+        color: #e6e8ef;
+        font: 13px/1.5 system-ui, sans-serif;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        border: 0;
+        border-radius: 8px;
+        background: #6c8cff;
+        color: #0b0d13;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      input {
+        width: 100%;
+        margin: 8px 0;
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid #2b3040;
+        background: #1e222d;
+        color: #e6e8ef;
+      }
+      #reply {
+        margin-top: 12px;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="prompt" placeholder="Optional question about this tab" />
+    <button id="capture">Explain this tab</button>
+    <div id="reply"></div>
+    <script src="popup.js" type="module"></script>
+  </body>
+</html>

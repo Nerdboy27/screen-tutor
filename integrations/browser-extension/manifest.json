@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Screen-Aware AI Tutor",
+  "version": "1.0.0",
+  "description": "Explain the visible tab with the Screen-Aware AI Tutor backend.",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "host_permissions": ["http://127.0.0.1:8000/*", "https://*/*"],
+  "action": { "default_popup": "popup.html" },
+  "background": { "service_worker": "background.js", "type": "module" },
+  "commands": {
+    "capture-tab": {
+      "suggested_key": { "default": "Ctrl+Shift+Space" },
+      "description": "Capture the visible tab and ask the tutor"
+    }
+  }
+}

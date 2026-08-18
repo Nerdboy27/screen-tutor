@@ -1,0 +1,50 @@
+{
+  "name": "screen-tutor-vscode",
+  "displayName": "Screen-Aware AI Tutor",
+  "description": "Explain the current selection or file with the Screen-Aware AI Tutor backend.",
+  "version": "1.0.0",
+  "publisher": "screen-tutor",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Education", "Other"],
+  "main": "./out/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "commands": [
+      {
+        "command": "screenTutor.explainSelection",
+        "title": "AI Tutor: Explain selection"
+      },
+      {
+        "command": "screenTutor.followUp",
+        "title": "AI Tutor: Ask a follow-up"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "screenTutor.explainSelection",
+        "key": "ctrl+shift+space",
+        "mac": "cmd+shift+space",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "Screen-Aware AI Tutor",
+      "properties": {
+        "screenTutor.apiBaseUrl": {
+          "type": "string",
+          "default": "http://127.0.0.1:8000"
+        },
+        "screenTutor.apiKey": { "type": "string", "default": "" }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.10",
+    "@types/vscode": "1.85.0",
+    "typescript": "5.5.3"
+  }
+}

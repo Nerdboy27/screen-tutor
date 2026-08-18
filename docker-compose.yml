@@ -1,0 +1,29 @@
+services:
+  api:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      TUTOR_GEMINI_API_KEY: ${TUTOR_GEMINI_API_KEY:?set TUTOR_GEMINI_API_KEY}
+      TUTOR_API_KEYS: ${TUTOR_API_KEYS:-}
+      TUTOR_CORS_ORIGINS: http://localhost:3000
+      TUTOR_DATABASE_URL: sqlite+aiosqlite:////data/tutor.db
+      TUTOR_ENVIRONMENT: production
+    volumes:
+      - tutor-data:/data
+
+  web:
+    build:
+      context: ./web
+      args:
+        NEXT_PUBLIC_API_BASE_URL: http://localhost:8000
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:8000
+      NEXT_PUBLIC_API_KEY: ${TUTOR_API_KEYS:-}
+    depends_on:
+      - api
+
+volumes:
+  tutor-data:

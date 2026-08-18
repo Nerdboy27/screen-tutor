@@ -1,0 +1,18 @@
+[project]
+name = "screen-tutor-plugin-flashcards"
+version = "1.0.0"
+description = "Example third-party plugin: turns tutor replies into flashcards"
+requires-python = ">=3.10"
+dependencies = ["screen-tutor-backend"]
+
+# Installing this package in the same environment as the backend is all that is
+# required: the API discovers it through this entry point at startup.
+[project.entry-points."screen_tutor.plugins"]
+flashcards = "tutor_flashcards.plugin:plugin_factory"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["tutor_flashcards*"]
